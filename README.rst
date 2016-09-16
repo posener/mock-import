@@ -28,12 +28,24 @@ Import:
 
 Mocking import for a code block:
     >>> with mock_import():
-    ...     import do_not_exists
+    ...     import no_such_module  # Won't raise ImportError
+    ...     no_such_module.no_such_function()  # Won't raise AttributeError
 
 
 Mocking import as a decorator:
     >>> @mock_import()
     ... def method():
-    ...     import do_not_exists
+    ...     import no_such_module  # Won't raise ImportError
+    ...     no_such_module.no_such_function()  # Won't raise AttributeError
 
+    >>>     import no_such_module  # raises ImportError
 
+Making an exception:
+    >>> with mock_import(do_not_mock='no_such_module'):
+    ...     import no_such_other_module  # Won't raise ImportError
+    ...     import no_such_module  # Will raise ImportError
+
+    >>> with mock_import(do_not_mock=['nsm1', 'nsm2']):
+    ...     import nsm  # Won't raise ImportError
+    ...     import nsm1  # Will raise ImportError
+    ...     import nsm2  # Will raise ImportError

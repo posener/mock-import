@@ -7,13 +7,8 @@ mock_import
 .. image:: https://badge.fury.io/py/mock-import.svg
        :target: https://pypi.python.org/pypi/mock-import
 
-A helper function to mask `ImportError` s on a scoped code, using the `with`
-statement, or in method a method used as a decorator.
+A helper mocking function to mask ``ImportError`` s on a scoped code.
 Failed imports will be ignored, unless specified by the *do_not_mock* argument.
-
-The *do_not_mock* argument is a package or module name, or package or module
-names list. When specified, and imported in the scoped mocked code, importing
-them must succeed. If `None` (the default) then no import must succeed.
 
 Installation
 ------------

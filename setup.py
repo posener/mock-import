@@ -5,7 +5,7 @@ import setuptools
 
 setuptools.setup(
     name='mock-import',
-    version='0.0.2',
+    version='0.0.3',
     author='Eyal Posener',
     author_email='posener@gmail.com',
     description='A mocking functions for imports',

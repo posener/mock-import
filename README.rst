@@ -15,6 +15,16 @@ The *do_not_mock* argument is a package or module name, or package or module
 names list. When specified, and imported in the scoped mocked code, importing
 them must succeed. If `None` (the default) then no import must succeed.
 
+Installation
+------------
+
+Using pip: ``pip install import mock``
+
+Usage
+-----
+
+Import:
+    >>> from mock_import import mock_import
 
 Mocking import for a code block:
     >>> with mock_import():

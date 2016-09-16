@@ -1,5 +1,8 @@
 mock_import
-~~~~~~~~~
+===========
+
+.. image:: https://travis-ci.org/posener/mock-import.svg?branch=master
+       :target: https://travis-ci.org/posener/mock-import
 
 A helper function to mask `ImportError` s on a scoped code, using the `with`
 statement, or in method a method used as a decorator.

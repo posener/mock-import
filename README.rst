@@ -7,18 +7,13 @@ mock_import
 .. image:: https://badge.fury.io/py/mock-import.svg
        :target: https://pypi.python.org/pypi/mock-import
 
-A helper function to mask `ImportError` s on a scoped code, using the `with`
-statement, or in method a method used as a decorator.
+A helper mocking function to mask ``ImportError`` s on a scoped code.
 Failed imports will be ignored, unless specified by the *do_not_mock* argument.
-
-The *do_not_mock* argument is a package or module name, or package or module
-names list. When specified, and imported in the scoped mocked code, importing
-them must succeed. If `None` (the default) then no import must succeed.
 
 Installation
 ------------
 
-Using pip: ``pip install import mock``
+Using pip: ``pip install mock-import``
 
 Usage
 -----
@@ -28,12 +23,24 @@ Import:
 
 Mocking import for a code block:
     >>> with mock_import():
-    ...     import do_not_exists
+    ...     import no_such_module  # Won't raise ImportError
+    ...     no_such_module.no_such_function()  # Won't raise AttributeError
 
 
 Mocking import as a decorator:
     >>> @mock_import()
     ... def method():
-    ...     import do_not_exists
+    ...     import no_such_module  # Won't raise ImportError
+    ...     no_such_module.no_such_function()  # Won't raise AttributeError
 
+    >>>     import no_such_module  # raises ImportError
 
+Making an exception:
+    >>> with mock_import(do_not_mock='no_such_module'):
+    ...     import no_such_other_module  # Won't raise ImportError
+    ...     import no_such_module  # Will raise ImportError
+
+    >>> with mock_import(do_not_mock=['nsm1', 'nsm2']):
+    ...     import nsm  # Won't raise ImportError
+    ...     import nsm1  # Will raise ImportError
+    ...     import nsm2  # Will raise ImportError

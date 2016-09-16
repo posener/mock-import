@@ -18,7 +18,7 @@ them must succeed. If `None` (the default) then no import must succeed.
 Installation
 ------------
 
-Using pip: ``pip install import mock``
+Using pip: ``pip install mock-import``
 
 Usage
 -----

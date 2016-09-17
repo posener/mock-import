@@ -94,3 +94,9 @@ class TestMockImport(unittest.TestCase):
                 import no_such_module2_not.inner_module
         except ImportError:
             self.fail('mock_import do_not_mock failed')
+
+    def test_mock_import_kwargs(self):
+        with mock_import(not_such_function=mock.MagicMock(return_value=1)):
+            import no_such_module
+            return_value = no_such_module.not_such_function()
+            self.assertEqual(return_value, 1)

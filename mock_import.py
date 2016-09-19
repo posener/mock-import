@@ -26,8 +26,7 @@ def _match(module_name, name_to_ignore):
     :rtype: bool
     """
     return (
-        module_name == name_to_ignore
-        or
+        module_name == name_to_ignore or
         module_name.startswith(name_to_ignore + '.')
     )
 

@@ -11,6 +11,6 @@ setuptools.setup(
     description='A mocking functions for imports',
     keywords='mock import',
     url='http://github.com/posener/mock-import.git',
-    packages=['mock_import'],
+    py_module=['mock_import'],
     install_requires=['mock>=2.0.0'],
 )

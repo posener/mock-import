@@ -2,3 +2,5 @@
 .tox
 .idea
 *.pyc
+.coverage
+htmlcov

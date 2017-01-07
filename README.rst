@@ -7,6 +7,9 @@ mock_import
 .. image:: https://badge.fury.io/py/mock-import.svg
        :target: https://pypi.python.org/pypi/mock-import
 
+.. image:: https://codecov.io/gh/posener/mock-import/branch/master/graph/badge.svg
+     :target: https://codecov.io/gh/posener/mock-import
+
 A helper mocking function to mask ``ImportError`` s on a scoped code.
 Failed imports will be ignored, unless specified by the *do_not_mock* argument.
 

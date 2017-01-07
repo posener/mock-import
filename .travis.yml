@@ -1,7 +1,6 @@
 language: python
 python:
 - '2.7'
-- '3.2'
 - '3.3'
 - '3.4'
 - '3.5'
@@ -10,7 +9,9 @@ install:
 - pip install -r test-requirements.txt
 script:
 - flake8 --ignore F401 *.py
-- python -m unittest tests
+- coverage run tests.py
+after_success:
+  - codecov
 deploy:
   provider: pypi
   user: posener

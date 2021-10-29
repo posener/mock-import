@@ -101,8 +101,8 @@ class TestMockImport(unittest.TestCase):
             return_value = no_such_module.not_such_function()
             self.assertEqual(return_value, 1)
 
-    def test_mock_import_do_mock(self):
-        with mock_import(do_mock=['no_such_module']):
+    def test_mock_import_mock_only(self):
+        with mock_import(mock_only=['no_such_module']):
             import no_such_module
             self.assertIsInstance(no_such_module, mock.MagicMock)
 

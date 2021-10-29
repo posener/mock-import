@@ -31,13 +31,16 @@ def _match(module_name, name_to_ignore):
     )
 
 
-def mock_import(do_not_mock=None, **mock_kwargs):
+def mock_import(do_not_mock=None, mock_only=None, **mock_kwargs):
     """
     Mocks import statements by ignoring ImportErrors
     and replacing the missing module with a Mock.
 
     :param str|unicode|list[str|unicode] do_not_mock: names of modules
         that should exists, and an ImportError could be raised for.
+    :param str|unicode|list[str|unicode] mock_only: in case this parameter is
+        specified only modules from `mock_only` will be mocked (in case such
+        module is not available).
     :param mock_kwargs: kwargs for MagicMock object.
     :return: patch object
     """
@@ -51,6 +54,8 @@ def mock_import(do_not_mock=None, **mock_kwargs):
             if any((_match(module_name, prefix) for prefix in do_not_mock)):
                 # This is a module we need to import,
                 # so we raise the exception instead of mocking it
+                raise
+            if mock_only and not any((_match(module_name, prefix) for prefix in mock_only)):
                 raise
             # Mock external module so we can peacefully create our client
             return mock.MagicMock(**mock_kwargs)
